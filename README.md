@@ -33,6 +33,6 @@ copys the values of va_list without to influenc this list.
 ## malloc
 
 # Instruction
-1. write printf functions which is looking for ```%"format``` where ```format``` stands for the format which one want to print
+1. write printf functions which is looking for ```%"format"``` where ```"format"``` stands for the format which one want to print
 2. include Format function which are executed when the first point is true
 3. if no ```%``` was found, print an error
