@@ -1,27 +1,46 @@
-SRCS = ft_printf.c ft_hexa.c ft_strlen.c ft_strchr.c ft_putchar_fd.c \
-       ft_putstr_fd.c ft_putnbr_fd.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/06 15:41:27 by tunglaub          #+#    #+#              #
+#    Updated: 2024/05/06 15:43:52 by tunglaub         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-OBJS = ${SRCS:.c=.o}
-NAME = libft.a
-LIBC = ar rcs
 CC = cc
-RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
+NAME = libftprintf.a
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+SRC = ft_printf.c
+OBJ = $(SRC:.c=.o)
 
-${NAME}: ${OBJS}
-	${LIBC} ${NAME} ${OBJS}
+LIBFT_DIR = libft
+LIBFT_SRC = $(addprefix $(LIBFT_DIR)/, ft_hexa.c ft_strlen.c ft_strchr.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c)
+LIBFT_OBJ = $(LIBFT_SRC:.c=.o)
+LIBFT = $(LIBFT_DIR)/libft.a
 
-all: ${NAME}
+all: $(NAME)
+
+$(NAME): $(OBJ) $(LIBFT)
+    $(CC) $(CFLAGS) -o $@ $^
+
+$(LIBFT): $(LIBFT_OBJ)
+    @make -C $(LIBFT_DIR)
+
+%.o: %.c
+    $(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
-	${RM} ${OBJS}
+    @rm -f $(OBJ)
+    @make -C $(LIBFT_DIR) clean
 
 fclean: clean
-	${RM} ${NAME}
+    @rm -f $(NAME)
+    @make -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
-.PHONY : all clean fclean re
+.PHONY: all clean fclean re

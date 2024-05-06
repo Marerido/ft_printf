@@ -1,10 +1,21 @@
-#include "libft/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/06 15:38:55 by tunglaub          #+#    #+#             */
+/*   Updated: 2024/05/06 16:07:27 by tunglaub         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
 
 static int	ft_type1(va_list args, const char *str)
 {
-	int	i;
-	int	len;
-	char	*ptr;
+	int		i;
+	int		len;
 
 	i = 0;
 	len = 0;
@@ -23,8 +34,8 @@ static int	ft_type1(va_list args, const char *str)
 
 static int	ft_type2(va_list args, const char *str)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
 	char	*ptr;
 
 	i = 0;
@@ -76,7 +87,7 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (len);
 }
-
+/*
 #include <stdio.h>
 int main() {
     char c = 'A';
@@ -106,4 +117,4 @@ int main() {
 	ft_printf("Adress: %% \n");
 	printf("Original Adress: %%\n");
     return 0;
-}
+}*/

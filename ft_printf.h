@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hexa.c                                          :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 15:59:55 by tunglaub          #+#    #+#             */
-/*   Updated: 2024/05/06 16:00:00 by tunglaub         ###   ########.fr       */
+/*   Created: 2024/05/06 16:02:41 by tunglaub          #+#    #+#             */
+/*   Updated: 2024/05/06 16:03:20 by tunglaub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
+# include <stddef.h>
+# include "libft/libft.h"
 
-int	ft_hexa(unsigned long n, char c)
-{
-	char	*hexadecimal;
-	int		length;
+int		ft_printf(const char *str, ...);
 
-	if (c == 'x')
-		hexadecimal = "0123456789abcdef";
-	else
-		hexadecimal = "0123456789ABCDEF";
-	length = 0;
-	if (n > 15)
-		length += ft_hexa(n / 16, c);
-	ft_putchar_fd(hexadecimal[n % 16], 1);
-	return (length + 1);
-}
+#endif
