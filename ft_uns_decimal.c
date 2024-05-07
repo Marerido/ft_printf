@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_uns_decimal.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 16:02:41 by tunglaub          #+#    #+#             */
-/*   Updated: 2024/05/06 16:03:20 by tunglaub         ###   ########.fr       */
+/*   Created: 2024/05/06 16:01:51 by tunglaub          #+#    #+#             */
+/*   Updated: 2024/05/06 16:01:59 by tunglaub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stddef.h>
-# include "libft.h"
+#include "libft.h"
 
-int		ft_printf(const char *str, ...);
+int	ft_uns_decimal(unsigned int n)
+{
+	int		length;
+	char	*decimal;
 
-#endif
+	decimal = "0123456789";
+	length = 0;
+	if (n > 9)
+		length += ft_uns_decimal(n / 10);
+	ft_putchar_fd(decimal[n % 10], 1);
+	return (length + 1);
+}

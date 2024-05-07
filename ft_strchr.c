@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/06 16:02:41 by tunglaub          #+#    #+#             */
-/*   Updated: 2024/05/06 16:03:20 by tunglaub         ###   ########.fr       */
+/*   Created: 2024/04/08 17:22:21 by tunglaub          #+#    #+#             */
+/*   Updated: 2024/04/08 17:22:23 by tunglaub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
-# include <stddef.h>
-# include "libft.h"
-
-int		ft_printf(const char *str, ...);
-
-#endif
+char	*ft_strchr(const char *str, int c)
+{
+	while ((char)c != *str)
+	{
+		if (!*str)
+			return (0);
+		str++;
+	}
+	return ((char *)str);
+}

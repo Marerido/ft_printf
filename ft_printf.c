@@ -36,21 +36,11 @@ static int	ft_type2(va_list args, const char *str)
 {
 	int		i;
 	int		len;
-	char	*ptr;
 
 	i = 0;
 	len = 0;
 	if (str[i] == 'p')
-	{
-		ptr = va_arg(args, void *);
-		if (ptr)
-			len += ft_write_adress(ptr);
-		else
-		{
-			write(1, "0x0", 3);
-			len += 3;
-		}
-	}
+		len += ft_print_adress((unsigned long int)va_arg(args, void *));
 	else if (str[i] == 'u')
 		len += ft_uns_decimal(va_arg(args, unsigned int));
 	else if (str[i] == '%')
@@ -90,10 +80,10 @@ int	ft_printf(const char *str, ...)
 /*
 #include <stdio.h>
 int main() {
-    char c = 'A';
-    char *s = "Hallo";
-    int	d = -4; 
-    int x = 255;
+	char	c = 'A';
+	char	*s = "Hallo";
+	int		d = 45; 
+    int x = 0;
 	int	*p = &d;
 	unsigned int u = 1234567890;
 
