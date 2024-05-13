@@ -6,7 +6,7 @@
 /*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:38:55 by tunglaub          #+#    #+#             */
-/*   Updated: 2024/05/06 16:07:27 by tunglaub         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:09:37 by tunglaub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	ft_type2(va_list args, const char *str)
 	i = 0;
 	len = 0;
 	if (str[i] == 'p')
-		len += ft_print_adress((unsigned long int)va_arg(args, void *));
+		len += ft_print_adress(va_arg(args, unsigned long long));
 	else if (str[i] == 'u')
 		len += ft_uns_decimal(va_arg(args, unsigned int));
 	else if (str[i] == '%')
@@ -79,12 +79,13 @@ int	ft_printf(const char *str, ...)
 }
 /*
 #include <stdio.h>
+
 int main() {
 	char	c = 'A';
 	char	*s = "Hallo";
-	int		d = 45; 
+	int		d = -1; 
     int x = 0;
-	int	*p = &d;
+	//int	*p = &d;
 	unsigned int u = 1234567890;
 
     
@@ -92,16 +93,16 @@ int main() {
 	printf("Original Character: %c\n", c);
     ft_printf("String: %s\n", s);
     printf("Original String: %s\n", s);
-    ft_printf("Number: %d\n", (int)d);
+    ft_printf("Number: %d\n", d);
     printf("Original Dezimal: %d\n", d);
-    ft_printf("Dezimal: %i\n", (int)d);
+    ft_printf("Dezimal: %i\n", d);
     printf("Original Number: %i\n", d);
     ft_printf("Hex: %x\n", x);
     printf("Original Hex: %x\n", x);
     ft_printf("Hex: %X\n", x);
     printf("Original Hex: %X\n", x);
-	ft_printf("Adress: %p \n", p);
-	printf("Original Adress: %p\n", p);
+	ft_printf("Adress: %p %p \n", (void *)0, (void *)0);
+	printf("Original Adress: %p %p\n", (void *)0, (void *)0);
 	ft_printf("Adress: %u \n", u);
 	printf("Original Adress: %u\n", u);
 	ft_printf("Adress: %% \n");

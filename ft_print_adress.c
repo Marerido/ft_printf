@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_write_adress.c                                  :+:      :+:    :+:   */
+/*   ft_print_adress.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tunglaub <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 16:02:12 by tunglaub          #+#    #+#             */
-/*   Updated: 2024/05/06 16:02:24 by tunglaub         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:59:06 by tunglaub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int	ft_print_adress(unsigned long long n)
 	int	len;
 
 	len = 0;
-	len += ft_putstr_fd("0x", 1);
 	if (n == 0)
-		len += ft_putchar_fd('0', 1);
+		len += ft_putstr_fd("(nil)", 1);
 	else
 	{
+		len += ft_putstr_fd("0x", 1);
+		len += nb_length(n);
 		ft_write_adress(n);
-		len = nb_length(n);
 	}
 	return (len);
 }
